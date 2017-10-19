@@ -1,0 +1,12 @@
+﻿<UserControl x:Name="userControl" x:Class="PatchesReminder.PatchesReminderDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PatchesReminder"
+             mc:Ignorable="d"
+             Width="510"
+             Height="80" Background="#FFE01515">
+    <TextBlock x:Name="displayText" Text="ATTACK WITH PATCHES" HorizontalAlignment="Left" Height="80" VerticalAlignment="Center" Width="510" FontSize="48"/>
+
+</UserControl>

@@ -8,13 +8,25 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+		Squirrel|Any CPU = Squirrel|Any CPU
+		Squirrel|x86 = Squirrel|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Debug|x86.Build.0 = Debug|Any CPU
 		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Release|x86.ActiveCfg = Release|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Release|x86.Build.0 = Release|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Squirrel|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Squirrel|Any CPU.Build.0 = Release|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Squirrel|x86.ActiveCfg = Release|Any CPU
+		{A3E20D20-9C7F-4640-B59C-6CAB35E38FED}.Squirrel|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
