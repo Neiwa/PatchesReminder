@@ -23,7 +23,7 @@ namespace PatchesReminder
 
         public string Author => "Martin Johansson";
 
-        public Version Version => new Version(0,0,1);
+        public Version Version => new Version(0,0,2);
 
         public MenuItem MenuItem => null;
 
@@ -35,28 +35,40 @@ namespace PatchesReminder
             //throw new NotImplementedException();
         }
 
-        public void OnLoad()
+        private PatchesReminderLogic InitLogic()
         {
-            _prd = new PatchesReminderDisplay();
-            Core.OverlayCanvas.Children.Add(_prd);
-            _logic = new PatchesReminderLogic();
-            _logic.PatchesAttacked += (sender, args) => _prd.Hide();
-            _logic.PatchesEnter += (sender, cardName) =>
+            var logic = new PatchesReminderLogic();
+            logic.PatchesAttacked += (sender, args) => _prd.Hide();
+            logic.PatchesEnter += (sender, cardName) =>
             {
                 Log.Info($"Attack with {cardName}");
                 //prd.DisplayText = $"ATTACK WITH {cardName.ToUpper()}";
                 _prd.Show();
             };
-            GameEvents.OnPlayerPlay.Add(_logic.PlayerPlay);
 
-            GameEvents.OnPlayerDeckToPlay.Add(_logic.PlayerDeckToPlay);
-            GameEvents.OnPlayerMinionAttack.Add(_logic.PlayerMinionAttack);
-            GameEvents.OnGameEnd.Add(_prd.Hide);
-            GameEvents.OnTurnStart.Add( a => _prd.Hide());
+            return logic;
+        }
+
+        private PatchesReminderDisplay InitDisplay()
+        {
+            var display = new PatchesReminderDisplay();
+            GameEvents.OnGameEnd.Add(display.Hide);
+            GameEvents.OnTurnStart.Add(a => display.Hide());
+
+            return display;
+        }
+
+        public void OnLoad()
+        {
+            _prd = _prd ?? InitDisplay();
+            Core.OverlayCanvas.Children.Add(_prd);
+
+            _logic = _logic ?? InitLogic();
         }
 
         public void OnUnload()
         {
+            Core.OverlayCanvas.Children.Remove(_prd);
             _prd.Hide();
             //throw new NotImplementedException();
         }

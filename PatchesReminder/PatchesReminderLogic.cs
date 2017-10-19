@@ -23,24 +23,35 @@ namespace PatchesReminder
 
         private readonly HashSet<string> _attackers = new HashSet<string>();
 
+        public PatchesReminderLogic()
+        {
+            GameEvents.OnPlayerPlay.Add(PlayerPlay);
+
+            GameEvents.OnPlayerDeckToPlay.Add(PlayerDeckToPlay);
+            GameEvents.OnPlayerMinionAttack.Add(PlayerMinionAttack);
+        }
+
         public void PlayerDeckToPlay(Card card)
         {
             if (card.Mechanics.Contains("charge", StringComparer.InvariantCultureIgnoreCase))
             {
-                Log.Info($"Attack with {card.Name}");
                 //Notify player to attack with patches
-                _attackers.Add(card.Name);
-                OnPatchesEnter(card.Name);
+                if (_attackers.Add(card.Name))
+                {
+                    OnPatchesEnter(card.Name);
+                }
             }
         }
 
         public void PlayerMinionAttack(AttackInfo attackInfo)
         {
             //Check if Patches still can attack
+            //If Patches can not, stop telling player to attack with patches
+
+            //Check if the player attacked with Patches
             if (_attackers.Contains(attackInfo.Attacker.Name))
             {
                 _attackers.Remove(attackInfo.Attacker.Name);
-                //If Patches can not, stop telling player to attack with patches
                 OnPatchesAttacked();
             }
         }
